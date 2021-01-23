@@ -1,0 +1,28 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid contentblock">
+    <span class="navbar-brand mb-0 h1">
+      Mishanin Nikita P3210<br>
+      Version: 102525
+    </span>
+  </div>
+</nav>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown contentblock">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <!-- Login Form -->
+    <form method="post">
+      <input #email type="text" id="email" class="fadeIn first" name="email" placeholder="email">
+      <input #login type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+      <input #password type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="button" class="fadeIn fourth" value="Sign Up" (click)="submit(email.value, login.value, password.value)">
+      <!--<p-button label="Log in" class="fadeIn fourth button" (onClick)="submit(login.value, password.value)"></p-button>-->
+    </form>
+
+  </div>
+</div>
+

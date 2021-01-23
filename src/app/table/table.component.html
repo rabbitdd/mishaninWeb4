@@ -1,0 +1,140 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid contentblock">
+    <span class="navbar-brand mb-0 h1">
+      Mishanin Nikita P3210<br>
+      ID: 102525
+    </span>
+    <span>
+      <div id="logOut_button">
+          <input type="button" class="fadeIn five" value="Log out" (click)="onLogOut()">
+      </div>
+    </span>
+  </div>
+</nav>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="contentblock wrapper">
+  <div>
+  <h1>
+    Welcome {{name}}!
+  </h1>
+  </div>
+  <div class="canvas">
+    <div class="real_canvas wrapper">
+  <canvas #canvas width="900" height="500" (click)="drawPointWithMouse($event)">
+  </canvas>
+  </div>
+    <div class="toolsBar">
+      <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+<!--       <p-inputNumber [(ngModel)]="value3" [ngModelOptions]="{standalone: true}">-->
+<!--       </p-inputNumber>-->
+        <div id="x_button">
+        <label for="verticalX" style="display: block; text-align: center;">X</label>
+        <p-inputNumber [(ngModel)]="valueX"
+                       id="verticalX"
+                       name="valueX"
+                       ngModel
+                       required
+                       mode="decimal"
+                       [min]="-5"
+                       [max]="3"
+                       [showButtons]="true"
+                       buttonLayout="vertical"
+                       spinnerMode="vertical"
+                       decrementButtonClass="p-button-secondary"
+                       incrementButtonClass="p-button-secondary"
+                       incrementButtonIcon="pi pi-plus"
+                       decrementButtonIcon="pi pi-minus">
+
+        </p-inputNumber>
+        </div>
+
+        <div id="y_button">
+          <h5>Y: {{valueY}}</h5>
+          <p-slider [(ngModel)]="valueY"
+                    [step]="0.001"
+                    [min] = -5.000
+                    [max] = 5.000
+                    name="valueY"
+                    ngModel
+                    required
+                    ></p-slider>
+        </div>
+        <div id="r_button">
+          <label for="verticalR" style="display: block; text-align: center;">R</label>
+          <p-inputNumber [(ngModel)]="valueR"
+                         mode="decimal"
+                         id="verticalR"
+                         name="valueR"
+                         ngModel
+                         required
+                         [showButtons]="true"
+                         buttonLayout="vertical"
+                         spinnerMode="vertical"
+                         decrementButtonClass="p-button-secondary"
+                         incrementButtonClass="p-button-secondary"
+                         incrementButtonIcon="pi pi-plus"
+                         decrementButtonIcon="pi pi-minus"
+                         [min]="-5" [max]="3">
+
+          </p-inputNumber>
+        </div>
+        <div class="buttons">
+        <div id="submit_button">
+          <input type="button" class="fadeIn five" value="Submit" (click)="onSubmit(form)">
+        </div>
+        <div id="clear_button">
+          <input type="button" class="fadeIn five" value="Clear" (click)="clear()">
+        </div>
+        </div>
+<!--        <div id="clear_button">-->
+<!--          <button>Clear</button>-->
+<!--        </div>-->
+      </form>
+  </div>
+  </div>
+
+  <div class="table wrapper">
+  <p-table [style]="{ width: 'auto'}" [value]="listOfPoints">
+    <ng-template pTemplate="caption">
+        Points
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let item of items">
+          {{item}}
+        </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-point>
+      <tr>
+        <td>
+          {{point.x}}
+        </td>
+        <td>
+          {{point.y}}
+        </td>
+        <td>
+          {{point.r}}
+        </td>
+        <td>
+          {{point.time}}
+        </td>
+        <td>
+          {{point.date}}
+        </td>
+        <td>
+          {{point.answer}}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  </div>
+
+
+
+</div>
