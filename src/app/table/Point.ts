@@ -1,6 +1,6 @@
 export class Point{
   x:number;
-  y:number;
+  y:string;
   r:number;
   time:string;
   date:string;

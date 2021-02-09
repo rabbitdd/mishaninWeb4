@@ -16,12 +16,13 @@
     <!-- Tabs Titles -->
     <!-- Login Form -->
     <form method="post">
-      <input #login type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input #password type="password" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="button" class="fadeIn fourth" value="Log In" (click)="submit(login.value, password.value)">
+      <input #login type="text" id="login" class="fadeIn second" name="login" placeholder="login" required/>
+      <input #password type="password" id="password" class="fadeIn third" name="login" placeholder="password" required/>
+      <input type="button" class="fadeIn fourth" value="Sign In" (click)="validationAndSend(login.value, password.value)">
       <input type="button" class="fadeIn five" value="Sign Up" (click)="onSignUp()">
-      <!--<p-button label="Log in" class="fadeIn fourth button" (onClick)="submit(login.value, password.value)"></p-button>-->
     </form>
 
   </div>
+<!--  <button type="button" class="btn btn-primary fadeIn fourth btn-lg" (click)="submit(login.value, password.value)">SignIn</button>-->
+<!--  <button type="button" class="btn btn-primary fadeIn five btn-lg" (click)="onSignUp()">SignUp</button>-->
 </div>

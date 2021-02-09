@@ -20,7 +20,9 @@ export class SignUpComponent implements OnInit {
     let role: string = "USER";
     let active: number = 1;
     let user: User = {email, username, password, role, active}
+    console.log(user);
     this.AddUserToTable.addPoint(user).subscribe((res: any) => {
+      console.log(res);
       if (res === "notAdd") {
         alert("Пользователь с таким именем уже существует !")
       } else {
@@ -29,6 +31,7 @@ export class SignUpComponent implements OnInit {
         this.route.navigateByUrl("/table");
       }
     }, error => {
+      console.log(error.status);
       if (error.status === 0) {
           this.route.navigate(['/error'])
       }

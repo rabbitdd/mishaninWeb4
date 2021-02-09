@@ -141,6 +141,10 @@ input[type=text]::placeholder, input[type=password]::placeholder {
   color: #cccccc;
 }
 
+input[type=password] {
+  margin-bottom: 20px;
+}
+
 
 
 /* ANIMATIONS */

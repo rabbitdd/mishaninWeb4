@@ -66,6 +66,7 @@
         <div id="r_button">
           <label for="verticalR" style="display: block; text-align: center;">R</label>
           <p-inputNumber [(ngModel)]="valueR"
+                         (onInput)="changeRadiusValueAndRedraw()"
                          mode="decimal"
                          id="verticalR"
                          name="valueR"

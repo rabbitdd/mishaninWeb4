@@ -172,7 +172,7 @@ export class TableComponent implements OnInit, AfterViewInit {
       // console.log("drawing");
       return true;
     } else {
-      alert("Введите R > 0");
+      alert("R > 0");
       return false;
     }
   }
@@ -220,6 +220,8 @@ export class TableComponent implements OnInit, AfterViewInit {
     // });
   }
   ngOnInit(): void {
+    let url: string = "http://localhost:8080/Web4-0.0.1-SNAPSHOT/table";
+    let url2: string = "http://localhost:8080/table";
     console.log(localStorage.getItem('username') + ":" + localStorage.getItem('password'));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(localStorage.getItem('username') + ":" + localStorage.getItem('password'))
     });
@@ -227,14 +229,14 @@ export class TableComponent implements OnInit, AfterViewInit {
     //   console.log(event);
     // })
     this.name = localStorage.getItem('username');
-    this.http.get('http://localhost:8080/table', {headers,
+    this.http.get(url2, {headers,
       params: new HttpParams().set('flag',"0")}).subscribe(
       (data:Point[]) => {
         this.listOfPoints = data;
         data.forEach(value => {
           // this.valueForLocalStorage = this.initLocalStorage(value);
           // localStorage.setItem('points',this.valueForLocalStorage);
-          this.draw(value.x / (value.r / 150) + 450, Math.abs(value.y / (value.r / 150) - 250), value.r);
+          this.draw(value.x / (value.r / 150) + 450, Math.abs(+value.y / (value.r / 150) - 250), value.r);
         });
       }, error => {
         console.log(error.status);
@@ -273,19 +275,21 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   clear(): void {
+    let url: string = "http://localhost:8080/Web4-0.0.1-SNAPSHOT/table";
+    let url2: string = "http://localhost:8080/table";
     this.context.clearRect(0, 0, 900, 500);
     this.drawCoordinatePlane();
     console.log("clear");
     const headers = new HttpHeaders({
       Authorization: 'Basic ' + btoa(localStorage.getItem('username') + ":" + localStorage.getItem('password')),
     });
-    this.http.get("http://localhost:8080/table", {headers,
+    this.http.get(url2, {headers,
       params: new HttpParams().set('flag',"1")}).subscribe((data:Point[]) => {
       this.listOfPoints = data;
       data.forEach(value => {
         // this.valueForLocalStorage = this.initLocalStorage(value);
         // localStorage.setItem('points',this.valueForLocalStorage);
-        this.draw(value.x / (value.r / 150) + 450, Math.abs(value.y / (value.r / 150) - 250), value.r);
+        this.draw(value.x / (value.r / 150) + 450, Math.abs(+value.y / (value.r / 150) - 250), value.r);
       });
     }, error => {
       console.log(error.status);
@@ -296,5 +300,26 @@ export class TableComponent implements OnInit, AfterViewInit {
         // this.route.navigate(['/error']);
       }
     });
+  }
+
+
+
+  changeRadiusValueAndRedraw() {
+    console.log("change");
+    // console.log(this.valueX);
+    // console.log(this.valueY);
+    let r = this.valueR;
+    if (r <= 0)
+      alert("Изменение R невозможно, R > 0");
+    else {
+      this.context.clearRect(0, 0, 900, 500);
+      this.drawCoordinatePlane();
+      console.log(this.valueR);
+      this.listOfPoints.forEach(point => {
+        this.draw(point.x / (r / 150) + 450, Math.abs(+point.y / (r / 150) - 250), r);
+      })
+      console.log(this.listOfPoints);
+    }
+
   }
 }
