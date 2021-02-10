@@ -230,7 +230,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     //   console.log(event);
     // })
     this.name = localStorage.getItem('username');
-    this.http.get(url2, {headers,
+    this.http.get(url3, {headers,
       params: new HttpParams().set('flag',"0")}).subscribe(
       (data:Point[]) => {
         this.listOfPoints = data;
