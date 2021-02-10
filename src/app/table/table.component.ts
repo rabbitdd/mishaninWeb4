@@ -222,6 +222,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     let url: string = "http://localhost:8080/Web4-0.0.1-SNAPSHOT/table";
     let url2: string = "http://localhost:8080/table";
+    let url3: string = "https://mishaninweb4back.herokuapp.com/table";
     console.log(localStorage.getItem('username') + ":" + localStorage.getItem('password'));
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(localStorage.getItem('username') + ":" + localStorage.getItem('password'))
     });
