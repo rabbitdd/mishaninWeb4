@@ -15,8 +15,9 @@ export class AddPointToTable {
     console.log(point);
     let url: string = "http://localhost:8080/Web4-0.0.1-SNAPSHOT/table";
     let url2: string = "http://localhost:8080/table";
+    let url3: string = "https://mishaninweb4back.herokuapp.com/table";
     const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(localStorage.getItem('username') + ":" + localStorage.getItem('password'))});
-    return this.http.post<Point>(url2, point, {
+    return this.http.post<Point>(url3, point, {
       headers: headers,
     })
       .pipe();

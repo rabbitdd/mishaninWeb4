@@ -277,13 +277,14 @@ export class TableComponent implements OnInit, AfterViewInit {
   clear(): void {
     let url: string = "http://localhost:8080/Web4-0.0.1-SNAPSHOT/table";
     let url2: string = "http://localhost:8080/table";
+    let url3: string = "https://mishaninweb4back.herokuapp.com/auth";
     this.context.clearRect(0, 0, 900, 500);
     this.drawCoordinatePlane();
     console.log("clear");
     const headers = new HttpHeaders({
       Authorization: 'Basic ' + btoa(localStorage.getItem('username') + ":" + localStorage.getItem('password')),
     });
-    this.http.get(url2, {headers,
+    this.http.get(url3, {headers,
       params: new HttpParams().set('flag',"1")}).subscribe((data:Point[]) => {
       this.listOfPoints = data;
       data.forEach(value => {
