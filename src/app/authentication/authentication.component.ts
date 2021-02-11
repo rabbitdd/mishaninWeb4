@@ -24,6 +24,7 @@ export class AuthenticationComponent implements OnInit {
       let email: string = "thelordstig@gmail.com";
       let role: string = "USER";
       let active: number = 1;
+      username = username.toLowerCase();
       const newUser: User = {email, username, password, role, active};
       console.log(newUser);
       this.AuthenticationService

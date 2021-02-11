@@ -19,6 +19,7 @@ export class SignUpComponent implements OnInit {
   submit(email, username, password) {
     let role: string = "USER";
     let active: number = 1;
+    username = username.toLowerCase();
     let user: User = {email, username, password, role, active}
     console.log(user);
     this.AddUserToTable.addPoint(user).subscribe((res: any) => {
