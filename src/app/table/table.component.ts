@@ -278,7 +278,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   clear(): void {
     let url: string = "http://localhost:8080/Web4-0.0.1-SNAPSHOT/table";
     let url2: string = "http://localhost:8080/table";
-    let url3: string = "https://mishaninweb4back.herokuapp.com/auth";
+    let url3: string = "https://mishaninweb4back.herokuapp.com/table";
     this.context.clearRect(0, 0, 900, 500);
     this.drawCoordinatePlane();
     console.log("clear");
