@@ -5,5 +5,6 @@ export class Point{
   time:string;
   date:string;
   answer:string;
+  owner:string;
 
 }

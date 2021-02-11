@@ -201,6 +201,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     point.y = y;
     point.r = r;
     point.date = new Date().toString();
+    point.owner = localStorage.getItem("username");
     // checkDate
     console.log(point.date);
     this.AddPoint.addPoint(point).subscribe((res: any) => {
@@ -231,7 +232,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     // })
     this.name = localStorage.getItem('username');
     this.http.get(url3, {headers,
-      params: new HttpParams().set('flag',"0")}).subscribe(
+      params: new HttpParams().set('flag',"0").set('username', localStorage.getItem("username"))}).subscribe(
       (data:Point[]) => {
         this.listOfPoints = data;
         data.forEach(value => {
@@ -286,7 +287,7 @@ export class TableComponent implements OnInit, AfterViewInit {
       Authorization: 'Basic ' + btoa(localStorage.getItem('username') + ":" + localStorage.getItem('password')),
     });
     this.http.get(url3, {headers,
-      params: new HttpParams().set('flag',"1")}).subscribe((data:Point[]) => {
+      params: new HttpParams().set('flag',"1").set('username', localStorage.getItem("username"))}).subscribe((data:Point[]) => {
       this.listOfPoints = data;
       data.forEach(value => {
         // this.valueForLocalStorage = this.initLocalStorage(value);
