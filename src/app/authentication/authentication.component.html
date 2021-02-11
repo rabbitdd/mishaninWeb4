@@ -16,8 +16,8 @@
     <!-- Tabs Titles -->
     <!-- Login Form -->
     <form method="post">
-      <input #login type="text" id="login" class="fadeIn second" name="login" placeholder="login" required/>
-      <input #password type="password" id="password" class="fadeIn third" name="login" placeholder="password" required/>
+      <input #login type="text" id="login" class="fadeIn second" name="login" placeholder="login" required maxlength="30"/>
+      <input #password type="password" id="password" class="fadeIn third" name="login" placeholder="password" required maxlength="30"/>
       <input type="button" class="fadeIn fourth" value="Sign In" (click)="validationAndSend(login.value, password.value)">
       <input type="button" class="fadeIn five" value="Sign Up" (click)="onSignUp()">
     </form>
