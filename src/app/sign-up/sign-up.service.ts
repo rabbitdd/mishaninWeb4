@@ -4,6 +4,7 @@ import {catchError} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 import {User} from "../authentication/User";
+import { Buffer } from 'buffer';
 
 @Injectable()
 export class AddUserToTable {
@@ -15,7 +16,9 @@ export class AddUserToTable {
   }
   addPoint(user: User): Observable<User> {
     console.log("Send ...");
-    const headers = new HttpHeaders({Authentication: 'Basic ' + btoa(user.email + ":" + user.username + ":" + user.password)});
+    let str = user.email + ":" + user.username + ":" + user.password;
+    const headers = new HttpHeaders({
+      Authentication: 'Basic ' + btoa(unescape(encodeURIComponent(str)))});
     return this.http.post<User>(this.url3, user, {
       headers: headers,
       responseType: "text" as 'json'

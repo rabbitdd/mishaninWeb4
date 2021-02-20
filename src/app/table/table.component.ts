@@ -225,7 +225,9 @@ export class TableComponent implements OnInit, AfterViewInit {
     let url2: string = "http://localhost:8080/table";
     let url3: string = "https://mishaninweb4back.herokuapp.com/table";
     console.log(localStorage.getItem('username') + ":" + localStorage.getItem('password'));
-    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(localStorage.getItem('username') + ":" + localStorage.getItem('password'))
+    let str: string = localStorage.getItem('username') + ":" + localStorage.getItem('password');
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + btoa(unescape(encodeURIComponent(str)))
     });
     // this.http.post('http://localhost:8080/table', null, {headers: headers}).subscribe((event: any) => {
     //   console.log(event);
@@ -283,8 +285,9 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.context.clearRect(0, 0, 900, 500);
     this.drawCoordinatePlane();
     console.log("clear");
+    let str: string = localStorage.getItem('username') + ":" + localStorage.getItem('password');
     const headers = new HttpHeaders({
-      Authorization: 'Basic ' + btoa(localStorage.getItem('username') + ":" + localStorage.getItem('password')),
+      Authorization: 'Basic ' + btoa(unescape(encodeURIComponent(str))),
     });
     this.http.get(url3, {headers,
       params: new HttpParams().set('flag',"1").set('username', localStorage.getItem("username"))}).subscribe((data:Point[]) => {

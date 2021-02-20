@@ -14,8 +14,9 @@ export class Authentication {
   }
   addUser(user: User): Observable<User>{
     console.log(user);
+    var str: string = user.username + ":" + user.password;
     const headers = new HttpHeaders({
-      Authorization: 'Basic ' + btoa(user.username + ":" + user.password)
+       Authorization: 'Basic ' + btoa(unescape(encodeURIComponent(str)))
     })
     return this.http.post<User>(this.url3, user, {
       headers: headers,
